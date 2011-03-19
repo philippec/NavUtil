@@ -17,7 +17,7 @@
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) UITableView *tableView;
 
 - (IBAction)done:(id)sender;
 @end

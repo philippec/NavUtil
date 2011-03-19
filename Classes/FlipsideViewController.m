@@ -16,7 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
+    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];    
+    CGRect frame = self.view.frame;
+    if (self.view.subviews)
+    {
+        // Account for title bar
+        UIView *bar = [self.view.subviews objectAtIndex: 0];
+        frame.origin.y += bar.frame.size.height;
+    }
+    self.tableView = [[[UITableView alloc] initWithFrame: frame style: UITableViewStyleGrouped] autorelease];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview: self.tableView];
 }
 
 
