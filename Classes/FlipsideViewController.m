@@ -11,7 +11,7 @@
 
 @implementation FlipsideViewController
 
-@synthesize delegate;
+@synthesize delegate, tableView = _tableView;
 
 
 - (void)viewDidLoad {
@@ -35,7 +35,7 @@
 
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+	self.tableView = nil;
 }
 
 
@@ -50,6 +50,64 @@
 
 - (void)dealloc {
     [super dealloc];
+}
+
+#pragma mark UITableViewDataSource methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    switch (section)
+    {
+        case 0: 
+            return 3;
+        default:
+            return 4;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+	// Configure the cell.
+    switch (indexPath.row)
+    {
+        case 0:
+            cell.textLabel.text = @"Row One";
+            break;
+        case 1:
+            cell.textLabel.text = @"Row Two";
+            break;
+        case 2:
+            cell.textLabel.text = @"Row Three";
+            break;
+        default:
+            cell.textLabel.text = @"Row Four";
+            break;
+    }
+    
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (section)
+    {
+        case 0: 
+            return @"First section";
+        default:
+            return @"Second section";
+    }
 }
 
 
