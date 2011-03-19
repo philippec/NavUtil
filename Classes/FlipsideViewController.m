@@ -20,7 +20,9 @@
 	
 	// install the done button
 	UIBarButtonItem *bbi = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)] autorelease];
-	self.navigationItem.leftBarButtonItem = bbi;
+	self.navigationItem.rightBarButtonItem = bbi;
+    // Initial title string
+    self.navigationItem.title = @"Settings";
 	
 	
     CGRect frame = self.view.frame;
