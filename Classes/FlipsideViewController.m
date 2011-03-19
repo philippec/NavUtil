@@ -6,6 +6,7 @@
 //  Copyright 2011 Philippe Casgrain. All rights reserved.
 //
 
+#import "FirstSectionDetailController.h"
 #import "FlipsideViewController.h"
 
 
@@ -137,12 +138,36 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // This is where I would normally create a new UIViewController and call
-    // [self.navigationController pushViewController: newController]
-    // But I do not have a navigation controller and I'm kind of stuck...
-    NSLog(@"didSelectRow {%d} in section {%d}", indexPath.row, indexPath.section);
-	
-	// NOTE now you can create and push a view controller here as you expect, because self.navigationController will work
+    NSLog(@"didSelectRow {%d} in section {%d}", indexPath.row, indexPath.section);	
+	// Now you can create and push a view controller here as you expect, because self.navigationController will work
+    switch (indexPath.section) 
+    {
+        case 0:
+            {
+                FirstSectionDetailController *controller = [[FirstSectionDetailController alloc] initWithNibName: @"FirstSectionDetail" bundle: nil];
+                switch (indexPath.row) 
+                {
+                    case 0:
+                        controller.rowLabelText = @"Row One";
+                        break;
+                    case 1:
+                        controller.rowLabelText = @"Row Two";
+                        break;
+                    case 2:
+                        controller.rowLabelText = @"Row Three";
+                        break;
+                    default:
+                        controller.rowLabelText = @"Row Four";
+                        break;
+                }
+                controller.title = controller.rowLabelText;
+                [self.navigationController pushViewController: controller animated: YES];
+                [controller release];
+            }
+            break;
+        default:
+            break;
+    }
 }
 
 
