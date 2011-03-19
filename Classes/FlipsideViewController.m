@@ -122,5 +122,15 @@
     }
 }
 
+#pragma mark UITableView delegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // This is where I would normally create a new UIViewController and call
+    // [self.navigationController pushViewController: newController]
+    // But I do not have a navigation controller and I'm kind of stuck...
+    NSLog(@"didSelectRow {%d} in section {%d}", indexPath.row, indexPath.section);
+}
+
 
 @end
