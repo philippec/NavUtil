@@ -16,15 +16,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];    
+    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];   
+	
+	// install the done button
+	UIBarButtonItem *bbi = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)] autorelease];
+	self.navigationItem.leftBarButtonItem = bbi;
+	
+	
     CGRect frame = self.view.frame;
+	
+	/*
     if (self.view.subviews)
     {
         // Account for title bar
         UIView *bar = [self.view.subviews objectAtIndex: 0];
         frame.origin.y += bar.frame.size.height;
     }
-    self.tableView = [[[UITableView alloc] initWithFrame: frame style: UITableViewStyleGrouped] autorelease];
+	 */
+    self.tableView = [[[UITableView alloc] initWithFrame:frame style: UITableViewStyleGrouped] autorelease];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -130,6 +139,8 @@
     // [self.navigationController pushViewController: newController]
     // But I do not have a navigation controller and I'm kind of stuck...
     NSLog(@"didSelectRow {%d} in section {%d}", indexPath.row, indexPath.section);
+	
+	// NOTE now you can create and push a view controller here as you expect, because self.navigationController will work
 }
 
 

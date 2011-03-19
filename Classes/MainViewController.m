@@ -29,10 +29,11 @@
 - (IBAction)showInfo:(id)sender {    
 	
 	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
+	UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
 	controller.delegate = self;
 	
 	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	[self presentModalViewController:controller animated:YES];
+	[self presentModalViewController:navController animated:YES];
 	
 	[controller release];
 }
