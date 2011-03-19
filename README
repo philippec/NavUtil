@@ -1,0 +1,15 @@
+== NavUtil - An example program ==
+
+This program documents one of the difficulties I currently face. It's pretty simple, really.
+
+I want to write an app that, when I press the "Info" button, flips over to a Settings page.
+
+This settings page should be a NavigationController at the top, and allow me to push and pop
+UIViewControllers easily, so I can set the different properties in my settings view easily.
+
+I can do almost all of this, but I'm stuck on the part where I insert the UINavigationController.
+
+It's got to be something extremely simple that I am missing; if you know and can point it out, that
+would be fantastic!
+
+--Philippe Casgrain
