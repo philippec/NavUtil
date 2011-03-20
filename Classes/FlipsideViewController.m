@@ -34,6 +34,11 @@
     [self.view addSubview: self.tableView];
 }
 
+- (void) viewWillAppear: (BOOL) animated
+{
+    [self.tableView deselectRowAtIndexPath: self.tableView.indexPathForSelectedRow animated: YES];
+    [super viewWillAppear: animated];
+}
 
 - (IBAction)done:(id)sender {
 	[self.delegate flipsideViewControllerDidFinish:self];	
