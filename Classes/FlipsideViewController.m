@@ -90,6 +90,7 @@
     }
     
 	// Configure the cell.
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     switch (indexPath.row)
     {
         case 0:
