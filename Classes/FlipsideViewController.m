@@ -21,21 +21,12 @@
 	
 	// install the done button
 	UIBarButtonItem *bbi = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)] autorelease];
-	self.navigationItem.rightBarButtonItem = bbi;
+	self.navigationItem.leftBarButtonItem = bbi;
     // Initial title string
     self.navigationItem.title = @"Settings";
-	
-	
+		
     CGRect frame = self.view.frame;
 	
-	/*
-    if (self.view.subviews)
-    {
-        // Account for title bar
-        UIView *bar = [self.view.subviews objectAtIndex: 0];
-        frame.origin.y += bar.frame.size.height;
-    }
-	 */
     self.tableView = [[[UITableView alloc] initWithFrame:frame style: UITableViewStyleGrouped] autorelease];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
