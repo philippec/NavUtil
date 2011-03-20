@@ -95,7 +95,22 @@
     }
     
 	// Configure the cell.
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    switch (indexPath.section)
+    {
+        case 0:
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
+        default:
+            {
+                UISwitch *sw = [[UISwitch alloc] initWithFrame: CGRectZero];
+                cell.accessoryView = sw;
+                [sw setOn: NO animated: NO];
+                [sw addTarget: self action: @selector(switchChanged:) forControlEvents: UIControlEventValueChanged];
+                [sw release];
+            }
+            break;
+    }
+
     switch (indexPath.row)
     {
         case 0:
@@ -113,6 +128,12 @@
     }
     
     return cell;
+}
+
+- (void) switchChanged: (id) sender
+{
+    UISwitch *sw = sender;
+    NSLog(@"The switch is %@", sw.on ? @"ON" : @"OFF" );
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -167,5 +188,11 @@
     }
 }
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    if (indexPath.section == 0)
+        return indexPath;
+    return nil;
+}
 
 @end
